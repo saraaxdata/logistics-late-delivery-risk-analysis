@@ -81,7 +81,7 @@ To guide the analysis, the project addresses the following questions:
 <br>
 
 
-## Tools
+## 🛠️ Tools
 * PowerBI - Dashboard development & data modeling
 * PowerQuery - Data extraction & transformation
 * DAX - Calculated measures & KPIs
@@ -94,13 +94,59 @@ To guide the analysis, the project addresses the following questions:
   * Format: CSV
   * Type: Synthetic/academic dataset designed for supply chain ML analysis
 
-## Approach
+<br>
+
+## 🔄 Approach
 
 1. PowerQuery
-    *  Imported dataset from CSV
-    *  Validated data types (dates, numerics, categories)
-    *  Removed columns and filtered to relevant fields for analysis
-    *  Created calculated columns
+       *  Imported dataset from CSV
+       *  Validated data types (dates, numerics, categories)
+       *  Removed columns and filtered to relevant fields for analysis
+       *  Created calculated columns
+           ```powerquery
+               customer_name = orders[customer_fname] & " "  & orders[customer_lname]
+            ```
+          ```powerquery
+               delay_days = orders[actual_shipping_days]-orders[scheduled_shipping_days]
+           ``` 
+   
 
 2. DAX measures
+   ```dax
+   Total Shipments = COUNT(orders[order_id])
+   ```
 
+   ```dax
+   Total Revenue = SUM(orders[order_sales])
+   ```
+
+    ```dax
+    Total Late Deliveries = CALCULATE([Total Shipments], orders[delivery_status]="Late delivery")
+   ```
+
+     ```dax
+     Shipment Delay Rate % = DIVIDE( [Total Late Deliveries],  [Total Shipments],0)
+   ```
+
+      ```dax
+      Revenue at Risk due to Delays = CALCULATE(SUM(orders[order_sales]),orders[delivery_status]= "Late delivery")
+   ```
+
+   ```dax
+   Maximum Delivery Delay (Days) = CALCULATE( MAX(orders[delay_days]),orders[delivery_status]= "Late delivery")
+   ```
+
+ 3. Dashboard Design
+    * Generated KPIs
+    * Grouped late deliveries by customer, city, product
+    * Calculated revenue at risk
+    * Assessed customer retention exposure
+    * Enabled Date range slicer (Order Date: 2015-2018) and Country filter (Order Country)
+
+<br>
+
+## 🚀 Future Improvements 
+
+1. Build classification model using Late_delivery_risk flag
+2. Root Cause Analysis using weather, carrier, route datasets
+3. Combine late delivery patterns with customer lifetime value and build churn risk prediction model
