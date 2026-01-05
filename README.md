@@ -6,7 +6,7 @@ Supply Chain Dataset | Power BI + DAX + Power Query | Ad-hoc analysis
 ## 📘 Project Overview
 LogisticsCo faced hidden customer retention risk despite meeting revenue targets.
 
-Conducted ad-hoc supply chain risk analysis on ~181K shipment records using **Power BI** to *surface operational blind spots, identifying customer concentration, geographic bottlenecks, and service tier failures* with $18M+ in at-risk revenue through risk-focused analytics framework.  
+Conducted ad-hoc supply chain risk analysis on ~181K synthetic shipment records using **Power BI** to *surface operational blind spots, identifying customer concentration, geographic bottlenecks, and service tier failures* with $18M+ in at-risk revenue through risk-focused analytics framework.  
 Built an interactive single-page Power BI dashboard transforming raw data into risk-focused KPIs that shifted leadership focus from volume to retention risk.
 
 
