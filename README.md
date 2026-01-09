@@ -98,11 +98,11 @@ To guide the analysis, the project addresses the following questions:
 
 ## 🔄 Approach
 
-1. PowerQuery
-       *  Imported dataset from CSV
-       *  Validated data types (dates, numerics, categories)
-       *  Removed columns and filtered to relevant fields for analysis
-       *  Created calculated columns
+1. PowerQuery  
+   *  Imported dataset from CSV
+   *  Validated data types (dates, numerics, categories)
+   *  Removed columns and filtered to relevant fields for analysis
+   *  Created calculated columns
            ```powerquery
                customer_name = orders[customer_fname] & " "  & orders[customer_lname]
             ```
